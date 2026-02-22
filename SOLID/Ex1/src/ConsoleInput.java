@@ -1,4 +1,11 @@
 // Deliberately unused right now (smell: leftover artifact).
+import java.util.*;
 public class ConsoleInput {
-    public String readLine() { return ""; }
+    public Scanner scanner;
+    public ConsoleInput() {
+        this.scanner = new Scanner(System.in);
+    }
+    public String readLine() {
+        return scanner.nextLine();
+    }
 }
