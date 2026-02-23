@@ -1,4 +1,3 @@
-// Deliberately unused right now (smell: leftover artifact).
 import java.util.*;
 public class ConsoleInput {
     public Scanner scanner;
