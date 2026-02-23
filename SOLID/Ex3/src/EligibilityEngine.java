@@ -5,12 +5,8 @@ public class EligibilityEngine {
     private final List<EligibilityRule> rules;
 
     public EligibilityEngine(FakeEligibilityStore store) {
-        this(store, defaultRules(new RuleInput()));
-    }
-
-    public EligibilityEngine(FakeEligibilityStore store, List<EligibilityRule> rules) {
         this.store = store;
-        this.rules = rules;
+        this.rules = defaultRules(new RuleInput());
     }
 
     public void runAndPrint(StudentProfile s) {

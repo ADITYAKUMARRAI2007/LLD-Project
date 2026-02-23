@@ -8,6 +8,8 @@ public class JsonExporter extends Exporter {
     }
 
     private String escape(String s) {
-        return s.replace("\"", "\\\"");
+        return s.replace("\\", "\\\\")
+                .replace("\"", "\\\"")
+                .replace("\n", "\\n");
     }
 }

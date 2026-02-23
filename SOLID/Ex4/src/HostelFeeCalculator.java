@@ -6,15 +6,9 @@ public class HostelFeeCalculator {
     private final AddOnPricingPolicy addOnPricingPolicy;
 
     public HostelFeeCalculator(FakeBookingRepo repo) {
-        this(repo, new LegacyRoomPricingPolicy(), new DefaultAddOnPricingPolicy());
-    }
-
-    public HostelFeeCalculator(FakeBookingRepo repo,
-                               RoomPricingPolicy roomPricingPolicy,
-                               AddOnPricingPolicy addOnPricingPolicy) {
         this.repo = repo;
-        this.roomPricingPolicy = roomPricingPolicy;
-        this.addOnPricingPolicy = addOnPricingPolicy;
+        this.roomPricingPolicy = new LegacyRoomPricingPolicy();
+        this.addOnPricingPolicy = new DefaultAddOnPricingPolicy();
     }
 
     public void process(BookingRequest req) {
