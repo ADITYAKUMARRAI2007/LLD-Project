@@ -1,0 +1,144 @@
+<mxfile host="app.diagrams.net" modified="2026-03-23T00:00:00.000Z" agent="GPT-5.3-Codex" version="24.7.17" type="device">
+  <diagram id="snake-ladder-uml" name="Page-1">
+    <mxGraphModel dx="1536" dy="864" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="2" value="&lt;b&gt;GameConfig&lt;/b&gt;&lt;br/&gt;-------------------------&lt;br/&gt;- boardDimension: int&lt;br/&gt;- snakeCount: int&lt;br/&gt;- ladderCount: int&lt;br/&gt;- playerCount: int&lt;br/&gt;- variant: GameVariant" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="260" height="190" as="geometry" />
+        </mxCell>
+
+        <mxCell id="3" value="&lt;b&gt;&amp;lt;&amp;lt;enum&amp;gt;&amp;gt; GameVariant&lt;/b&gt;&lt;br/&gt;-------------------------&lt;br/&gt;EASY&lt;br/&gt;DIFFICULT" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="40" y="260" width="260" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="4" value="&lt;b&gt;SnakeAndLadderGameFactory&lt;/b&gt;&lt;br/&gt;-------------------------&lt;br/&gt;+ createGame(config): SnakeAndLadderGame&lt;br/&gt;- createPlayers(count): List&amp;lt;Player&amp;gt;&lt;br/&gt;- validateConfig(config): void&lt;br/&gt;- createsCycle(snakes, ladders): boolean&lt;br/&gt;- hasCycleFrom(start, edges): boolean" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="350" y="40" width="370" height="210" as="geometry" />
+        </mxCell>
+
+        <mxCell id="5" value="&lt;b&gt;SnakeAndLadderGame&lt;/b&gt;&lt;br/&gt;-------------------------&lt;br/&gt;- board: Board&lt;br/&gt;- players: Queue&amp;lt;Player&amp;gt;&lt;br/&gt;- dice: Dice&lt;br/&gt;- turnStrategy: TurnStrategy&lt;br/&gt;- status: GameStatus&lt;br/&gt;- winner: Player&lt;br/&gt;-------------------------&lt;br/&gt;+ startGame(): void&lt;br/&gt;+ makeTurn(): TurnResult&lt;br/&gt;+ isFinished(): boolean&lt;br/&gt;+ getWinner(): Player" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="760" y="30" width="390" height="280" as="geometry" />
+        </mxCell>
+
+        <mxCell id="6" value="&lt;b&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt; TurnStrategy&lt;/b&gt;&lt;br/&gt;-------------------------&lt;br/&gt;+ evaluateTurn(rolls: List&amp;lt;Integer&amp;gt;): TurnDecision" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="40" width="360" height="130" as="geometry" />
+        </mxCell>
+
+        <mxCell id="7" value="&lt;b&gt;EasyTurnStrategy&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=6;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1210" y="220" width="170" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="8" value="&lt;b&gt;DifficultTurnStrategy&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=6;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="220" width="200" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="9" value="&lt;b&gt;Board&lt;/b&gt;&lt;br/&gt;-------------------------&lt;br/&gt;- size: int&lt;br/&gt;- jumps: Map&amp;lt;Integer, Jump&amp;gt;&lt;br/&gt;-------------------------&lt;br/&gt;+ addJump(jump): void&lt;br/&gt;+ resolvePosition(pos): int&lt;br/&gt;+ getSize(): int" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="710" y="390" width="300" height="180" as="geometry" />
+        </mxCell>
+
+        <mxCell id="10" value="&lt;b&gt;Dice&lt;/b&gt;&lt;br/&gt;-------------------------&lt;br/&gt;- minFace: int&lt;br/&gt;- maxFace: int&lt;br/&gt;- random: Random&lt;br/&gt;-------------------------&lt;br/&gt;+ roll(): int" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="400" width="250" height="170" as="geometry" />
+        </mxCell>
+
+        <mxCell id="11" value="&lt;b&gt;Player&lt;/b&gt;&lt;br/&gt;-------------------------&lt;br/&gt;- id: int&lt;br/&gt;- name: String&lt;br/&gt;- position: int&lt;br/&gt;-------------------------&lt;br/&gt;+ getId(): int&lt;br/&gt;+ getName(): String&lt;br/&gt;+ getPosition(): int&lt;br/&gt;+ setPosition(pos): void" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="380" width="290" height="210" as="geometry" />
+        </mxCell>
+
+        <mxCell id="12" value="&lt;b&gt;&amp;lt;&amp;lt;enum&amp;gt;&amp;gt; GameStatus&lt;/b&gt;&lt;br/&gt;-------------------------&lt;br/&gt;NOT_STARTED&lt;br/&gt;IN_PROGRESS&lt;br/&gt;FINISHED" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="810" y="610" width="280" height="130" as="geometry" />
+        </mxCell>
+
+        <mxCell id="13" value="&lt;b&gt;&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt; Jump&lt;/b&gt;&lt;br/&gt;-------------------------&lt;br/&gt;# start: int&lt;br/&gt;# end: int&lt;br/&gt;-------------------------&lt;br/&gt;+ getStart(): int&lt;br/&gt;+ getEnd(): int" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="340" y="640" width="320" height="170" as="geometry" />
+        </mxCell>
+
+        <mxCell id="14" value="&lt;b&gt;Snake&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=6;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="300" y="860" width="150" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="15" value="&lt;b&gt;Ladder&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=6;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="510" y="860" width="150" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="16" value="&lt;b&gt;JumpPlacementService&lt;/b&gt;&lt;br/&gt;-------------------------&lt;br/&gt;- random: Random&lt;br/&gt;-------------------------&lt;br/&gt;+ generateSnakes(...): List&amp;lt;Snake&amp;gt;&lt;br/&gt;+ generateLadders(...): List&amp;lt;Ladder&amp;gt;&lt;br/&gt;- isValidSnake(...): boolean&lt;br/&gt;- isValidLadder(...): boolean&lt;br/&gt;- sameRow(...): boolean&lt;br/&gt;- randomCell(...): int&lt;br/&gt;+ newOccupiedSet(): Set&amp;lt;Integer&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="40" y="430" width="360" height="260" as="geometry" />
+        </mxCell>
+
+        <mxCell id="17" value="&lt;b&gt;TurnDecision&lt;/b&gt;&lt;br/&gt;-------------------------&lt;br/&gt;- continueTurn: boolean&lt;br/&gt;- cancelTurn: boolean&lt;br/&gt;-------------------------&lt;br/&gt;+ shouldContinueTurn(): boolean&lt;br/&gt;+ shouldCancelTurn(): boolean" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1210" y="640" width="320" height="170" as="geometry" />
+        </mxCell>
+
+        <mxCell id="18" value="&lt;b&gt;TurnResult&lt;/b&gt;&lt;br/&gt;-------------------------&lt;br/&gt;- playerName: String&lt;br/&gt;- rolls: List&amp;lt;Integer&amp;gt;&lt;br/&gt;- initialPosition: int&lt;br/&gt;- finalPosition: int&lt;br/&gt;- turnLost: boolean&lt;br/&gt;- won: boolean" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1560" y="620" width="320" height="190" as="geometry" />
+        </mxCell>
+
+        <!-- Relationships -->
+        <mxCell id="100" value="uses" style="endArrow=open;html=1;rounded=0;dashed=1;" edge="1" parent="1" source="2" target="4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="101" value="variant" style="endArrow=open;html=1;rounded=0;" edge="1" parent="1" source="2" target="3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="102" value="creates" style="endArrow=open;html=1;rounded=0;dashed=1;" edge="1" parent="1" source="4" target="5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="103" value="uses" style="endArrow=open;html=1;rounded=0;dashed=1;" edge="1" parent="1" source="4" target="16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="104" value="1" style="endArrow=open;html=1;rounded=0;" edge="1" parent="1" source="5" target="9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="105" value="1" style="endArrow=open;html=1;rounded=0;" edge="1" parent="1" source="5" target="10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="106" value="players 1..*" style="startArrow=diamondThin;startFill=0;endArrow=open;html=1;rounded=0;" edge="1" parent="1" source="5" target="11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="107" value="injected" style="endArrow=open;html=1;rounded=0;dashed=1;" edge="1" parent="1" source="5" target="6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="108" value="status" style="endArrow=open;html=1;rounded=0;" edge="1" parent="1" source="5" target="12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="109" value="implements" style="endArrow=block;endFill=0;html=1;rounded=0;dashed=1;" edge="1" parent="1" source="7" target="6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="110" value="implements" style="endArrow=block;endFill=0;html=1;rounded=0;dashed=1;" edge="1" parent="1" source="8" target="6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="111" value="jumps 0..*" style="startArrow=diamondThin;startFill=1;endArrow=open;html=1;rounded=0;" edge="1" parent="1" source="9" target="13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="112" value="extends" style="endArrow=block;endFill=0;html=1;rounded=0;" edge="1" parent="1" source="14" target="13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="113" value="extends" style="endArrow=block;endFill=0;html=1;rounded=0;" edge="1" parent="1" source="15" target="13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="114" value="returns" style="endArrow=open;html=1;rounded=0;dashed=1;" edge="1" parent="1" source="6" target="17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="115" value="returns" style="endArrow=open;html=1;rounded=0;dashed=1;" edge="1" parent="1" source="5" target="18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
